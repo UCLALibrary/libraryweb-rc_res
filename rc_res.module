@@ -220,8 +220,8 @@ function rc_res_form_page_one($form, &$form_state) {
   $form['description'] = array(
     '#type'  => 'item',
     '#no-cache'  => TRUE,
-    '#title' => t('Welcome '.ucfirst(rc_session_variable_get('rc-res','name_first')).' '.ucfirst(rc_session_variable_get('rc-res','name_last')).'&nbsp;( <a href="yrl-logout">logout</a> )<br><br>UCLA students, faculty and staff may reserve group study spaces for groups of two or more people. UCLA Bruincard must be presented in order to claim a reservation.<br><br>NOTICE: The YRL Group Study Rooms will be painted between Monday, January 27 and Monday, February 3.
-Only a limited number of rooms will be available during this week. Collaboration Pods are not affected.'),
+    '#title' => t('Welcome '.ucfirst(rc_session_variable_get('rc-res','name_first')).' '.ucfirst(rc_session_variable_get('rc-res','name_last')).'&nbsp;( <a href="yrl-logout">logout</a> )<br><br>UCLA students, faculty and staff may reserve group study spaces for groups of two or more people. UCLA Bruincard must be presented in order to claim a reservation.<br><br><b>NOTICE: The YRL Group Study Rooms will be painted between Monday, January 27 and Monday, February 3.<br>
+Only a limited number of rooms will be available during this week. Collaboration Pods are not affected.</b>'),
   );
 
 //  Save this, it is usefull when testing
