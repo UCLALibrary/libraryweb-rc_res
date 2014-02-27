@@ -1349,7 +1349,7 @@ Your Reservations > Date & Time > Available Resources > <B>Details</B> > Finish 
   $form['description2'] = array
   (
     '#type'  => 'item',
-    '#title' => t('Your selected Resource --- <em>'.rc_session_variable_get('rc-res','rtitle').'</em> --- will be reserved at ').$available_resources,
+    '#title' => t('Your selected Resource --- '.rc_session_variable_get('rc-res','rtitle').' --- will be reserved at ').$available_resources,
     '#markup' => t('<br>An email confirmation containing all details will be sent to you after you confirm this page.'),
   );
 
@@ -1534,7 +1534,7 @@ $working_uid = rc_session_variable_get('rc-res','working_uid');
 <br>Sorry, your reservation could not be completed. Someone may have reserved the space you wanted. Please click on the <i>Change reservation</i> button and try a different date/time and/or resource.<br>
 <br>
 Current Reservation(s):
-<b></b>';
+';
     } else {
       $u_rstart=strtotime($rstart); // use to pick put the new reservation below
       foreach($rows['reservation'] as $row) {
@@ -1548,8 +1548,8 @@ Current Reservation(s):
 	}
       }
       $body = '
-<br>You have successfully reserved <em>'.$newRoomName.'</em> from <em>'.$newStartDate.'</em> to <em>'.$newEndDate.'</em>. Please bring your current Bruincard to the CLICC Laptop Lending Desk in the Research Library to claim your reservation. You can only claim your reservation from fifteen minutes before until fifteen minutes after the beginning of your reservation. Unclaimed reservations will be canceled. Laptop display adapters and dry erase markers and erasers are available for check out.
-<b></b>';
+<br>You have successfully reserved '.$newRoomName.' from '.$newStartDate.' to '.$newEndDate.'. Please bring your current Bruincard to the CLICC Laptop Lending Desk in the Research Library to claim your reservation. You can only claim your reservation from fifteen minutes before until fifteen minutes after the beginning of your reservation. Unclaimed reservations will be canceled. Laptop display adapters and dry erase markers and erasers are available for check out.
+'; // <b></b> is translated to ** in ASCII enail
     }
 
 
@@ -1564,10 +1564,9 @@ Current Reservation(s):
       if( $u_rstart == $startDate ){
 	$body = $body.'
 '.'<br><br>'.$mySpace.'
-'.'<b>'.$roomName.'
+'.$roomName.'
 '.'   Date/Time: '.date('g:ia \o\n l jS F Y',$startDate).'<br>'.'
-'.'   Duration: '.$dDate.' hour(s)</b>
-<b></b>
+'.'   Duration: '.$dDate.' hour(s)
 ';
       } else {
 	$body = $body.'
@@ -1575,7 +1574,6 @@ Current Reservation(s):
 '.''.$roomName.'
 '.'   Date/Time: '.date('g:ia \o\n l jS F Y',$startDate).'<br>'.'
 '.'   Duration:'.$dDate.' hour(s)
-<b></b>
 ';
       }
     }
@@ -1585,7 +1583,7 @@ Current Reservation(s):
 <br>
 Current Reservation(s):<br>
 No existing reservations
-<b></b>';
+';
   }
   $to = $uemail;
   $from = 'no-reply@library.ucla.edu';
@@ -1647,7 +1645,7 @@ $mail_message['result'] = $mail_system->mail($mail_message);
   (
     '#type'  => 'item',
     '#markup' => t(ucfirst(rc_session_variable_get('rc-res','name_first')).' '.ucfirst(rc_session_variable_get('rc-res','name_last')).'&nbsp;( <a href="yrl-logout">logout</a> )<br><br>
-Your Reservations > Date & Time > Available Resources > Details > <B>Finish</B> &nbsp;&nbsp;&nbsp;<br>'.$email_body),
+Your Reservations > Date & Time > Available Resources > Details > Finish &nbsp;&nbsp;&nbsp;<br>'.$email_body),
   );
 
   // Show the change button only whenthe reservation failed on submit
